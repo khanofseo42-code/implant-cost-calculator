@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 import { siteConfig } from "@/config/site";
 import { buildOrganizationSchema, buildSoftwareApplicationSchema } from "@/lib/seo/schema";
+import seoContent from "@content/settings/seo.json";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,13 +20,16 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const defaultTitle = seoContent.defaultMetaTitle || `${siteConfig.name} — Dental Implant Cost Calculator`;
+const defaultDescription = seoContent.defaultMetaDescription || siteConfig.description;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Dental Implant Cost Calculator`,
+    default: defaultTitle,
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.description,
+  description: defaultDescription,
   keywords: [...siteConfig.keywords],
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name }],
@@ -41,17 +45,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    title: `${siteConfig.name} — Dental Implant Cost Calculator`,
-    description: siteConfig.description,
+    title: defaultTitle,
+    description: defaultDescription,
     siteName: siteConfig.name,
+    images: seoContent.ogImage ? [{ url: seoContent.ogImage }] : undefined,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Dental Implant Cost Calculator`,
-    description: siteConfig.description,
+    title: defaultTitle,
+    description: defaultDescription,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: seoContent.favicon || "/favicon.ico",
   },
   manifest: "/manifest.json",
 };
@@ -97,18 +102,32 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           />
         ))}
+        {seoContent.headScripts && (
+          <script id="custom-head-script" dangerouslySetInnerHTML={{ __html: seoContent.headScripts }} />
+        )}
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <QueryProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </QueryProvider>
-        <Script
-          id="analytics-stub"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `/* Analytics placeholder: wire GA4/GTM/Clarity via env vars in src/lib/analytics */`,
-          }}
-        />
+        {seoContent.googleAnalyticsId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${seoContent.googleAnalyticsId}`}
+              strategy="afterInteractive"
+            />
+            <Script
+              id="ga4-init"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${seoContent.googleAnalyticsId}');`,
+              }}
+            />
+          </>
+        )}
       </body>
     </html>
   );

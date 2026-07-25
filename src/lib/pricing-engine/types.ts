@@ -66,7 +66,7 @@ export interface TreatmentConfig {
   id: TreatmentId;
   name: string;
   category: "single-site" | "multi-site" | "full-arch";
-  fixedImplantCount: number | null;
+  fixedImplantCount?: number | null;
   baseCostUSD: number;
   appointments: number;
   durationWeeks: number;

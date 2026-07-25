@@ -1,0 +1,8 @@
+{
+  "globalVariancePct": 12,
+  "riskSurchargePct": {
+    "smoking": 6,
+    "diabetesUncontrolled": 8,
+    "poorBoneCondition": 10
+  }
+}

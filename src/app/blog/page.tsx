@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SiteHeader } from "@/components/landing/SiteHeader";
 import { SiteFooter } from "@/components/landing/SiteFooter";
-import { blogPosts } from "@/config/blog";
+import { getAllBlogPosts } from "@/lib/blog";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function BlogIndexPage() {
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            {blogPosts.map((post) => (
+            {getAllBlogPosts().map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
@@ -37,11 +37,11 @@ export default function BlogIndexPage() {
                   {post.title}
                 </h2>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-foreground-muted">
-                  {post.description}
+                  {post.excerpt}
                 </p>
                 <div className="mt-4 flex items-center justify-between text-xs text-foreground-muted">
                   <span>
-                    {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                    {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "long",
                       day: "numeric",

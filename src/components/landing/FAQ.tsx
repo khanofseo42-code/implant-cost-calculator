@@ -1,21 +1,21 @@
 import { ChevronDown } from "lucide-react";
-import { faqItems } from "@/config/faq";
+import faqContent from "@content/pages/home/faq.json";
 
 export function FAQ() {
+  const { heading, subheading, items } = faqContent;
+
   return (
     <section id="faq" className="scroll-mt-20 px-4 py-20 sm:py-28">
       <div className="mx-auto max-w-3xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Frequently asked questions
+            {heading}
           </h2>
-          <p className="mt-3 text-lg text-foreground-muted">
-            Everything you need to know before you start.
-          </p>
+          <p className="mt-3 text-lg text-foreground-muted">{subheading}</p>
         </div>
 
         <div className="mt-12 space-y-3">
-          {faqItems.map((item) => (
+          {items.map((item) => (
             <details
               key={item.question}
               className="group rounded-2xl border border-border-subtle bg-surface p-5 open:shadow-premium"

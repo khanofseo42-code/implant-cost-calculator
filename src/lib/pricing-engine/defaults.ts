@@ -7,6 +7,7 @@ import proceduresJson from "@/config/pricing/procedures.json";
 import insuranceJson from "@/config/pricing/insurance.json";
 import financeJson from "@/config/pricing/finance.json";
 import campaignsJson from "@/config/pricing/campaigns.json";
+import metaJson from "@/config/pricing/meta.json";
 import type { PricingConfig } from "./types";
 
 const stateSchema = z.object({
@@ -57,7 +58,7 @@ const treatmentSchema = z.object({
   ]),
   name: z.string(),
   category: z.enum(["single-site", "multi-site", "full-arch"]),
-  fixedImplantCount: z.number().nullable(),
+  fixedImplantCount: z.number().nullable().optional(),
   baseCostUSD: z.number().nonnegative(),
   appointments: z.number().positive(),
   durationWeeks: z.number().positive(),
@@ -158,12 +159,8 @@ const rawConfig = {
   meta: {
     version: "1.0.0",
     updatedAt: new Date().toISOString(),
-    globalVariancePct: 12,
-    riskSurchargePct: {
-      smoking: 6,
-      diabetesUncontrolled: 8,
-      poorBoneCondition: 10,
-    },
+    globalVariancePct: metaJson.globalVariancePct,
+    riskSurchargePct: metaJson.riskSurchargePct,
   },
 };
 
@@ -174,10 +171,6 @@ export function loadPricingConfig(): PricingConfig {
   const parsed = pricingConfigSchema.parse(rawConfig);
   cachedConfig = parsed as PricingConfig;
   return cachedConfig;
-}
-
-export function invalidatePricingConfigCache() {
-  cachedConfig = null;
 }
 
 export { pricingConfigSchema };

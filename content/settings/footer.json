@@ -1,0 +1,26 @@
+{
+  "logoText": "ImplantIQ",
+  "logoImage": "",
+  "bioText": "A precision dental implant cost calculator that builds a personalized, itemized treatment estimate from your location, procedure, implant brand, insurance, and financing details — instantly, with no registration required.",
+  "productLinks": [
+    { "label": "Calculator", "url": "/calculator" },
+    { "label": "Compare Estimates", "url": "/compare" },
+    { "label": "How it works", "url": "/#how-it-works" },
+    { "label": "FAQ", "url": "/#faq" }
+  ],
+  "companyLinks": [
+    { "label": "About Us", "url": "/about" },
+    { "label": "Blog", "url": "/blog" },
+    { "label": "Contact", "url": "/contact" },
+    { "label": "Admin", "url": "/admin" }
+  ],
+  "legalLinks": [
+    { "label": "Privacy Policy", "url": "/privacy" },
+    { "label": "Terms of Service", "url": "/terms" },
+    { "label": "Disclaimer", "url": "/disclaimer" }
+  ],
+  "socialLinks": [
+    { "platform": "Twitter / X", "url": "https://twitter.com/implantiq" }
+  ],
+  "copyrightText": "provides educational cost estimates only and does not offer medical advice, diagnosis, or a binding treatment quote. Actual pricing depends on an in-person clinical evaluation."
+}

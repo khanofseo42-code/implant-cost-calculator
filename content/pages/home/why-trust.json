@@ -1,0 +1,30 @@
+{
+  "heading": "Built to be trusted, not just used",
+  "subheading": "Most online calculators show a single vague number. We show the reasoning.",
+  "cards": [
+    {
+      "icon": "sliders",
+      "title": "Modular, transparent pricing engine",
+      "description": "Every estimate is built from configurable country, city, brand, and procedure pricing — never a single hardcoded number.",
+      "link": ""
+    },
+    {
+      "icon": "scroll-text",
+      "title": "We show our work",
+      "description": "Every result includes a plain-language explanation of exactly which inputs drove each line item in your estimate.",
+      "link": ""
+    },
+    {
+      "icon": "lock",
+      "title": "Your data stays yours",
+      "description": "Your answers are saved locally in your browser. Nothing is sent anywhere unless you choose to unlock your PDF report.",
+      "link": ""
+    },
+    {
+      "icon": "search",
+      "title": "No obligation, ever",
+      "description": "This is an independent estimating tool, not a lead funnel for a single clinic. Use it purely to plan and compare.",
+      "link": ""
+    }
+  ]
+}

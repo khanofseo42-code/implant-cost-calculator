@@ -1,0 +1,412 @@
+# Decap CMS configuration for ImplantIQ.
+# Full setup walkthrough (GitHub OAuth App, env vars, local testing): docs/decap-cms-setup.md
+#
+# Local dev: run `npx decap-server` alongside `npm run dev`, then open
+# http://localhost:3000/admin — local_backend below makes Decap write straight
+# to your working tree with no GitHub login required.
+#
+# Production: replace base_url with your real deployed domain, register a
+# GitHub OAuth App with callback URL "<base_url>/api/decap/callback", and set
+# GITHUB_OAUTH_CLIENT_ID / GITHUB_OAUTH_CLIENT_SECRET on your host.
+
+backend:
+  name: github
+  repo: khanofseo42-code/implant-cost-calculator
+  branch: main
+  base_url: https://implantiq.example.com # TODO: replace with your real deployed domain
+  auth_endpoint: api/decap/auth
+
+local_backend: true
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: simple
+
+collections:
+  # ---------------------------------------------------------------------
+  # Global site settings
+  # ---------------------------------------------------------------------
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - file: "content/settings/header.json"
+        label: "Header & Navigation"
+        name: "header"
+        fields:
+          - { label: "Logo Text", name: "logoText", widget: "string" }
+          - { label: "Logo Image (optional — overrides the icon mark)", name: "logoImage", widget: "image", required: false }
+          - label: "Navigation Links"
+            name: "navLinks"
+            widget: "list"
+            summary: "{{label}} → {{url}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - { label: "CTA Button Text", name: "ctaText", widget: "string" }
+          - { label: "CTA Button URL", name: "ctaUrl", widget: "string" }
+
+      - file: "content/settings/footer.json"
+        label: "Footer"
+        name: "footer"
+        fields:
+          - { label: "Logo Text", name: "logoText", widget: "string" }
+          - { label: "Logo Image (optional)", name: "logoImage", widget: "image", required: false }
+          - { label: "Bio Text", name: "bioText", widget: "text" }
+          - label: "Product Links"
+            name: "productLinks"
+            widget: "list"
+            summary: "{{label}} → {{url}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Company Links"
+            name: "companyLinks"
+            widget: "list"
+            summary: "{{label}} → {{url}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Legal Links"
+            name: "legalLinks"
+            widget: "list"
+            summary: "{{label}} → {{url}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Social Media Links"
+            name: "socialLinks"
+            widget: "list"
+            required: false
+            summary: "{{platform}}"
+            fields:
+              - { label: "Platform", name: "platform", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Copyright / Disclaimer Text (appended after the site name)"
+            name: "copyrightText"
+            widget: "text"
+
+      - file: "content/settings/seo.json"
+        label: "Global SEO & Scripts"
+        name: "seo"
+        fields:
+          - { label: "Default Meta Title", name: "defaultMetaTitle", widget: "string" }
+          - { label: "Default Meta Description", name: "defaultMetaDescription", widget: "text" }
+          - { label: "OpenGraph Image", name: "ogImage", widget: "image" }
+          - { label: "Favicon", name: "favicon", widget: "file" }
+          - { label: "Google Analytics Measurement ID (e.g. G-XXXXXXX)", name: "googleAnalyticsId", widget: "string", required: false, hint: "Leave blank to disable GA." }
+          - label: "Custom Head Script"
+            name: "headScripts"
+            widget: "text"
+            required: false
+            hint: "Raw JS body only — do NOT include <script> tags, they're added automatically. Use this for GTM or other inline tracking snippets."
+
+  # ---------------------------------------------------------------------
+  # Homepage sections
+  # ---------------------------------------------------------------------
+  - name: "homepage"
+    label: "Homepage Sections"
+    files:
+      - file: "content/pages/home/hero.json"
+        label: "Hero Section"
+        name: "hero"
+        fields:
+          - { label: "Eyebrow Badge Text", name: "eyebrow", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Highlighted Phrase", name: "highlight", widget: "string", hint: "Must be an exact substring of Title — it's rendered with the gradient accent color." }
+          - { label: "Subtitle", name: "subtitle", widget: "text" }
+          - { label: "Primary CTA Text", name: "primaryCtaText", widget: "string" }
+          - { label: "Primary CTA URL", name: "primaryCtaUrl", widget: "string" }
+          - { label: "Secondary CTA Text", name: "secondaryCtaText", widget: "string" }
+          - { label: "Secondary CTA URL", name: "secondaryCtaUrl", widget: "string" }
+          - { label: "Banner Image (optional — replaces the default illustration)", name: "bannerImage", widget: "image", required: false }
+          - label: "Trust Badges"
+            name: "badges"
+            widget: "list"
+            summary: "{{label}}"
+            fields:
+              - &icon_select
+                label: "Icon"
+                name: "icon"
+                widget: "select"
+                options: ["shield-check", "sparkles", "clock", "user-check", "clipboard-list", "calculator", "file-check", "message-heart", "database", "scroll-text", "lock", "search", "sliders", "users", "arrow-right", "check-circle"]
+              - { label: "Label", name: "label", widget: "string" }
+
+      - file: "content/pages/home/how-it-works.json"
+        label: "How It Works Section"
+        name: "howItWorks"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subheading", name: "subheading", widget: "string" }
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - *icon_select
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Link (optional)", name: "link", widget: "string", required: false }
+
+      - file: "content/pages/home/why-trust.json"
+        label: "Feature Cards (Why Trust Us)"
+        name: "whyTrust"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subheading", name: "subheading", widget: "string" }
+          - label: "Cards"
+            name: "cards"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - *icon_select
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Link (optional)", name: "link", widget: "string", required: false }
+
+      - file: "content/pages/home/faq.json"
+        label: "FAQ Section"
+        name: "faq"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subheading", name: "subheading", widget: "string" }
+          - { label: "Emit FAQPage JSON-LD Schema", name: "enableFaqSchema", widget: "boolean", default: true }
+          - label: "Questions"
+            name: "items"
+            widget: "list"
+            summary: "{{question}}"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+
+      - file: "content/pages/home/cta.json"
+        label: "Bottom CTA Section"
+        name: "cta"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subheading", name: "subheading", widget: "string" }
+          - { label: "CTA Text", name: "ctaText", widget: "string" }
+          - { label: "CTA URL", name: "ctaUrl", widget: "string" }
+
+  # ---------------------------------------------------------------------
+  # Calculator / tool configuration
+  # ---------------------------------------------------------------------
+  - name: "calculator"
+    label: "Calculator / Tool Configuration"
+    files:
+      - file: "content/pages/calculator/tool-config.json"
+        label: "Calculator Page Settings"
+        name: "toolConfig"
+        fields:
+          - { label: "Meta Title", name: "metaTitle", widget: "string" }
+          - { label: "Meta Description", name: "metaDescription", widget: "text" }
+          - { label: "Disclaimer Banner Text", name: "disclaimerText", widget: "text" }
+
+  # ---------------------------------------------------------------------
+  # Pricing data — same JSON files the calculator engine reads at build time.
+  # Changes take effect after your host rebuilds/redeploys (or after a local
+  # `npm run build` / `npm run dev` restart when using local_backend).
+  # ---------------------------------------------------------------------
+  - name: "pricing"
+    label: "Pricing Data"
+    files:
+      - file: "src/config/pricing/countries.json"
+        label: "Countries"
+        name: "countries"
+        fields:
+          - label: "Countries"
+            name: "countries"
+            widget: "list"
+            summary: "{{name}} ({{code}})"
+            fields:
+              - { label: "Code", name: "code", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Currency Code", name: "currency", widget: "string" }
+              - { label: "Currency Symbol", name: "currencySymbol", widget: "string" }
+              - { label: "Cost Multiplier", name: "costMultiplier", widget: "number", value_type: "float" }
+              - { label: "Tax Rate (0–1)", name: "taxRate", widget: "number", value_type: "float" }
+              - { label: "Tax Label", name: "taxLabel", widget: "string" }
+              - label: "States / Regions"
+                name: "states"
+                widget: "list"
+                summary: "{{name}} ({{code}})"
+                fields:
+                  - { label: "Code", name: "code", widget: "string" }
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Cost Multiplier", name: "costMultiplier", widget: "number", value_type: "float" }
+
+      - file: "src/config/pricing/cities.json"
+        label: "Cities"
+        name: "cities"
+        fields:
+          - label: "Cities"
+            name: "cities"
+            widget: "list"
+            summary: "{{city}} ({{countryCode}}/{{stateCode}})"
+            fields:
+              - { label: "Country Code", name: "countryCode", widget: "string" }
+              - { label: "State Code", name: "stateCode", widget: "string" }
+              - { label: "City", name: "city", widget: "string" }
+              - { label: "Adjustment % (e.g. 8 or -5)", name: "adjustmentPct", widget: "number", value_type: "float" }
+
+      - file: "src/config/pricing/brands.json"
+        label: "Implant Brands"
+        name: "brands"
+        fields:
+          - label: "Brands"
+            name: "brands"
+            widget: "list"
+            summary: "{{name}} ({{tier}})"
+            fields:
+              - { label: "ID (unique, lowercase-hyphenated)", name: "id", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Tier", name: "tier", widget: "select", options: ["economy", "standard", "premium"] }
+              - { label: "Material", name: "material", widget: "select", options: ["titanium", "zirconia"] }
+              - { label: "Cost Per Implant (USD)", name: "costPerImplantUSD", widget: "number", value_type: "float" }
+              - { label: "Abutment Cost (USD)", name: "abutmentCostUSD", widget: "number", value_type: "float" }
+              - { label: "Crown Cost (USD)", name: "crownCostUSD", widget: "number", value_type: "float" }
+              - { label: "Description", name: "description", widget: "text" }
+
+      - file: "src/config/pricing/treatments.json"
+        label: "Treatments"
+        name: "treatments"
+        fields:
+          - label: "Treatments"
+            name: "treatments"
+            widget: "list"
+            allow_add: false
+            summary: "{{name}}"
+            hint: "Edit existing rows only — the calculator's step-by-step logic is hardcoded to these exact treatment IDs, so rows can't be added or removed here."
+            fields:
+              - { label: "ID", name: "id", widget: "select", options: ["single-implant", "multiple-implants", "implant-bridge", "implant-supported-denture", "all-on-4", "all-on-6", "all-on-8", "full-mouth-restoration"] }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Category", name: "category", widget: "select", options: ["single-site", "multi-site", "full-arch"] }
+              - { label: "Fixed Implant Count (leave blank if it varies by patient)", name: "fixedImplantCount", widget: "number", value_type: "int", required: false }
+              - { label: "Base Cost (USD)", name: "baseCostUSD", widget: "number", value_type: "float" }
+              - { label: "Appointments", name: "appointments", widget: "number", value_type: "int" }
+              - { label: "Duration (weeks)", name: "durationWeeks", widget: "number", value_type: "float" }
+              - { label: "Success Rate (%)", name: "successRatePct", widget: "number", value_type: "float" }
+              - { label: "Variance (%)", name: "variancePct", widget: "number", value_type: "float" }
+              - { label: "Per-Implant Bulk Discount (%)", name: "perImplantBulkDiscountPct", widget: "number", value_type: "float" }
+              - { label: "Description", name: "description", widget: "text" }
+
+      - file: "src/config/pricing/procedures.json"
+        label: "Extra Procedures"
+        name: "procedures"
+        fields:
+          - label: "Procedures"
+            name: "procedures"
+            widget: "list"
+            allow_add: false
+            summary: "{{name}}"
+            hint: "Edit existing rows only — IDs are referenced directly by the calculator's add-on procedures step."
+            fields:
+              - { label: "ID", name: "id", widget: "select", options: ["bone-graft", "sinus-lift", "extraction", "ct-scan", "sedation", "temporary-crown", "permanent-crown", "digital-impressions", "prf", "socket-preservation"] }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Unit", name: "unit", widget: "select", options: ["flat", "per-arch", "per-implant"] }
+              - { label: "Base Cost (USD)", name: "baseCostUSD", widget: "number", value_type: "float" }
+              - { label: "Variance (%)", name: "variancePct", widget: "number", value_type: "float" }
+              - label: "Combo Discounts (optional)"
+                name: "comboDiscounts"
+                widget: "list"
+                required: false
+                summary: "with {{withProcedureId}}: {{discountPct}}%"
+                fields:
+                  - { label: "With Procedure ID", name: "withProcedureId", widget: "string" }
+                  - { label: "Discount (%)", name: "discountPct", widget: "number", value_type: "float" }
+
+      - file: "src/config/pricing/insurance.json"
+        label: "Insurance Providers"
+        name: "insurance"
+        fields:
+          - label: "Providers"
+            name: "insurance"
+            widget: "list"
+            summary: "{{name}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Typical Coverage (%)", name: "typicalCoveragePct", widget: "number", value_type: "float" }
+              - { label: "Typical Annual Max (USD)", name: "typicalAnnualMaxUSD", widget: "number", value_type: "float" }
+
+      - file: "src/config/pricing/finance.json"
+        label: "Financing Plans"
+        name: "finance"
+        fields:
+          - label: "Plans"
+            name: "finance"
+            widget: "list"
+            summary: "{{label}} ({{aprPct}}% APR)"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "APR (%)", name: "aprPct", widget: "number", value_type: "float" }
+              - { label: "Min Term (months)", name: "minMonths", widget: "number", value_type: "int" }
+              - { label: "Max Term (months)", name: "maxMonths", widget: "number", value_type: "int" }
+
+      - file: "src/config/pricing/campaigns.json"
+        label: "Discount Campaigns"
+        name: "campaigns"
+        fields:
+          - label: "Campaigns"
+            name: "campaigns"
+            widget: "list"
+            summary: "{{name}} ({{discountPct}}%)"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Discount (%)", name: "discountPct", widget: "number", value_type: "float" }
+              - label: "Applies To Treatments"
+                name: "appliesToTreatmentIds"
+                widget: "select"
+                multiple: true
+                options: ["all", "single-implant", "multiple-implants", "implant-bridge", "implant-supported-denture", "all-on-4", "all-on-6", "all-on-8", "full-mouth-restoration"]
+                hint: 'Select "all" alone for every treatment, or select specific treatments — not both.'
+              - { label: "Active", name: "active", widget: "boolean", default: true }
+              - { label: "Start Date", name: "startDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: "End Date", name: "endDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+
+      - file: "src/config/pricing/meta.json"
+        label: "Global Risk & Variance Settings"
+        name: "meta"
+        fields:
+          - { label: "Global Variance (%)", name: "globalVariancePct", widget: "number", value_type: "float" }
+          - label: "Risk Surcharges (%)"
+            name: "riskSurchargePct"
+            widget: "object"
+            fields:
+              - { label: "Smoking", name: "smoking", widget: "number", value_type: "float" }
+              - { label: "Uncontrolled Diabetes", name: "diabetesUncontrolled", widget: "number", value_type: "float" }
+              - { label: "Poor Bone Condition", name: "poorBoneCondition", widget: "number", value_type: "float" }
+
+  # ---------------------------------------------------------------------
+  # Blog
+  # ---------------------------------------------------------------------
+  - name: "blog"
+    label: "Blog"
+    folder: "content/blogs"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "URL path: /blog/<slug>" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Updated", name: "updated", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", required: false }
+      - { label: "Author", name: "author", widget: "string", default: "ImplantIQ Editorial Team" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Reading Time (minutes)", name: "readingMinutes", widget: "number", value_type: "int", default: 5 }
+      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Content", name: "body", widget: "markdown" }
+      - { label: "Meta Title (optional — falls back to Title)", name: "metaTitle", widget: "string", required: false }
+      - { label: "Meta Description (optional — falls back to Excerpt)", name: "metaDescription", widget: "text", required: false }
+      - { label: "Keywords", name: "keywords", widget: "list", required: false }
+      - { label: "Canonical URL (optional)", name: "canonicalUrl", widget: "string", required: false }
+      - { label: "OpenGraph Image (optional — falls back to Featured Image)", name: "ogImage", widget: "image", required: false }
+      - { label: "Schema Type", name: "schemaType", widget: "select", options: ["BlogPosting", "Article", "MedicalWebPage", "FAQPage"], default: "BlogPosting" }
+      - label: "Custom JSON-LD (optional)"
+        name: "customSchema"
+        widget: "text"
+        required: false
+        hint: "Paste raw JSON-LD to override the auto-generated schema for this post entirely. Leave blank to use Schema Type above."

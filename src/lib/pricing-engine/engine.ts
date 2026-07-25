@@ -10,7 +10,9 @@ import { applyInsurance } from "./insurance";
 import { calculateFinance } from "./finance";
 
 function resolveImplantCount(treatment: TreatmentConfig, input: CalculatorInput): number {
-  if (treatment.fixedImplantCount !== null) return treatment.fixedImplantCount;
+  // Loose comparison: a CMS-edited config may omit this field entirely rather
+  // than write an explicit `null`, and both mean "count varies by patient".
+  if (treatment.fixedImplantCount != null) return treatment.fixedImplantCount;
   const fromMissingTeeth =
     input.patient.missingTeethUpper + input.patient.missingTeethLower;
   return Math.max(2, fromMissingTeeth || 2);
@@ -92,7 +94,7 @@ export function calculateEstimate(
 
   // --- Core surgical / prosthetic base cost ---
   let surgeryBase: number;
-  if (treatment.fixedImplantCount === null) {
+  if (treatment.fixedImplantCount == null) {
     const effectiveUnits =
       1 + (implantCount - 1) * (1 - treatment.perImplantBulkDiscountPct / 100);
     surgeryBase = treatment.baseCostUSD * effectiveUnits;

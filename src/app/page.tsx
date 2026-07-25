@@ -6,13 +6,14 @@ import { HowItWorks } from "@/components/landing/HowItWorks";
 import { WhyTrust } from "@/components/landing/WhyTrust";
 import { FAQ } from "@/components/landing/FAQ";
 import { CtaSection } from "@/components/landing/CtaSection";
-import { faqItems } from "@/config/faq";
+import faqContent from "@content/pages/home/faq.json";
+import seoContent from "@content/settings/seo.json";
 import { siteConfig } from "@/config/site";
 import { buildBreadcrumbSchema, buildFaqSchema, buildMedicalWebPageSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Dental Implant Cost Calculator — Instant, Personalized Estimate",
-  description: siteConfig.description,
+  description: seoContent.defaultMetaDescription || siteConfig.description,
   alternates: { canonical: "/" },
 };
 
@@ -23,7 +24,9 @@ export default function HomePage() {
       description: siteConfig.description,
       url: siteConfig.url,
     }),
-    buildFaqSchema(faqItems.map((f) => ({ question: f.question, answer: f.answer }))),
+    ...(faqContent.enableFaqSchema
+      ? [buildFaqSchema(faqContent.items.map((f) => ({ question: f.question, answer: f.answer })))]
+      : []),
     buildBreadcrumbSchema([{ name: "Home", url: siteConfig.url }]),
   ];
 

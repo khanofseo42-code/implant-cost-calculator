@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
+import { AlertTriangle } from "lucide-react";
 import { CalculatorShell } from "@/components/calculator/CalculatorShell";
 import { SiteHeader } from "@/components/landing/SiteHeader";
 import { siteConfig } from "@/config/site";
 import { buildBreadcrumbSchema } from "@/lib/seo/schema";
+import toolConfig from "@content/pages/calculator/tool-config.json";
 
 export const metadata: Metadata = {
-  title: "Dental Implant Cost Calculator",
-  description:
-    "Answer a few questions about your location, treatment, and insurance to get a personalized, itemized dental implant cost estimate in under 60 seconds.",
+  title: toolConfig.metaTitle,
+  description: toolConfig.metaDescription,
   alternates: { canonical: "/calculator" },
   openGraph: {
-    title: `Dental Implant Cost Calculator | ${siteConfig.name}`,
-    description:
-      "Get a personalized, itemized dental implant cost estimate in under 60 seconds.",
+    title: `${toolConfig.metaTitle} | ${siteConfig.name}`,
+    description: toolConfig.metaDescription,
     url: "/calculator",
   },
 };
@@ -31,6 +31,12 @@ export default function CalculatorPage() {
       />
       <SiteHeader />
       <main className="flex-1 bg-grid px-4 py-10 sm:py-14">
+        {toolConfig.disclaimerText && (
+          <div className="mx-auto mb-6 flex max-w-3xl items-start gap-2 rounded-xl border border-border-subtle bg-surface-muted px-4 py-3 text-xs leading-relaxed text-foreground-muted">
+            <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent-500" aria-hidden="true" />
+            <span>{toolConfig.disclaimerText}</span>
+          </div>
+        )}
         <CalculatorShell />
       </main>
     </div>

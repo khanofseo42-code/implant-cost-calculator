@@ -1,0 +1,24 @@
+{
+  "logoText": "ImplantIQ",
+  "logoImage": "",
+  "navLinks": [
+    {
+      "label": "How it works",
+      "url": "/#how-it-works"
+    },
+    {
+      "label": "FAQ",
+      "url": "/#faq"
+    },
+    {
+      "label": "Blog",
+      "url": "/blog"
+    },
+    {
+      "label": "About",
+      "url": "/about"
+    }
+  ],
+  "ctaText": "Start Free Estimate",
+  "ctaUrl": "/calculator"
+}

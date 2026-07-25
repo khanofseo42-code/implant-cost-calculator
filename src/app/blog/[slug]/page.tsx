@@ -4,32 +4,37 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { SiteHeader } from "@/components/landing/SiteHeader";
 import { SiteFooter } from "@/components/landing/SiteFooter";
-import { blogPosts, getBlogPost } from "@/config/blog";
+import { getAllBlogPosts, getBlogPost } from "@/lib/blog";
 import { siteConfig } from "@/config/site";
-import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
+import { buildBlogSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+  return getAllBlogPosts().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) return {};
+
+  const canonical = post.canonicalUrl || `/blog/${post.slug}`;
+
   return {
-    title: post.title,
-    description: post.description,
-    alternates: { canonical: `/blog/${post.slug}` },
+    title: post.metaTitle || post.title,
+    description: post.metaDescription || post.excerpt,
+    keywords: post.keywords.length ? post.keywords : undefined,
+    alternates: { canonical },
     openGraph: {
       type: "article",
-      title: post.title,
-      description: post.description,
-      publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt,
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
+      publishedTime: post.date,
+      modifiedTime: post.updated,
+      images: post.ogImage ? [{ url: post.ogImage }] : undefined,
     },
   };
 }
@@ -40,12 +45,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) notFound();
 
   const jsonLd = [
-    buildArticleSchema({
+    buildBlogSchema({
+      schemaType: post.schemaType,
       title: post.title,
-      description: post.description,
+      description: post.metaDescription || post.excerpt,
       url: `${siteConfig.url}/blog/${post.slug}`,
-      publishedAt: post.publishedAt,
-      updatedAt: post.updatedAt,
+      publishedAt: post.date,
+      updatedAt: post.updated,
+      author: post.author,
+      image: post.ogImage || undefined,
+      customSchema: post.customSchema,
     }),
     buildBreadcrumbSchema([
       { name: "Home", url: siteConfig.url },
@@ -80,9 +89,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post.title}
           </h1>
           <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-foreground-muted">
+            <span>By {post.author}</span>
+            <span aria-hidden="true">&middot;</span>
             <span>
               Published{" "}
-              {new Date(post.publishedAt).toLocaleDateString("en-US", {
+              {new Date(post.date).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
@@ -92,20 +103,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <span>{post.readingMinutes} min read</span>
           </div>
 
-          <div className="legal-prose mt-8">
-            {post.content.map((block, i) => {
-              if (block.type === "h2") return <h2 key={i}>{block.text}</h2>;
-              if (block.type === "ul")
-                return (
-                  <ul key={i}>
-                    {block.items.map((item, j) => (
-                      <li key={j}>{item}</li>
-                    ))}
-                  </ul>
-                );
-              return <p key={i}>{block.text}</p>;
-            })}
-          </div>
+          <div
+            className="legal-prose mt-8"
+            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+          />
 
           <div className="mt-12 rounded-2xl border border-border-subtle bg-surface-muted p-6 text-center">
             <p className="text-sm text-foreground-muted">

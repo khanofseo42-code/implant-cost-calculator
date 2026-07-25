@@ -85,27 +85,55 @@ export function buildFaqSchema(items: { question: string; answer: string }[]) {
   };
 }
 
-export function buildArticleSchema(opts: {
+/**
+ * Builds JSON-LD for a blog post. `schemaType` drives which schema.org type is
+ * emitted (set per-post in Decap CMS); `customSchema`, if present and valid
+ * JSON, overrides the generated object entirely so editors can hand-author
+ * structured data for a specific post.
+ */
+export function buildBlogSchema(opts: {
+  schemaType: "BlogPosting" | "Article" | "MedicalWebPage" | "FAQPage";
   title: string;
   description: string;
   url: string;
   publishedAt: string;
   updatedAt: string;
+  author: string;
+  image?: string;
+  customSchema?: string;
 }) {
-  return {
+  if (opts.customSchema) {
+    try {
+      return JSON.parse(opts.customSchema);
+    } catch {
+      // Malformed custom JSON-LD — fall back to the generated schema below.
+    }
+  }
+
+  const base: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": opts.schemaType,
     headline: opts.title,
+    name: opts.title,
     description: opts.description,
     url: opts.url,
     datePublished: opts.publishedAt,
     dateModified: opts.updatedAt,
+    author: { "@type": "Organization", name: opts.author },
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.url,
     },
   };
+
+  if (opts.image) base.image = opts.image;
+
+  if (opts.schemaType === "MedicalWebPage") {
+    base.medicalAudience = { "@type": "MedicalAudience", audienceType: "Patient" };
+  }
+
+  return base;
 }
 
 export function buildBreadcrumbSchema(items: { name: string; url: string }[]) {
