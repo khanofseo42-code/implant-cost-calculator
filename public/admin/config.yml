@@ -13,9 +13,8 @@ backend:
   name: github
   repo: khanofseo42-code/implant-cost-calculator
   branch: main
-  base_url: https://implantiq.example.com # TODO: replace with your real deployed domain
-  auth_endpoint: api/decap/auth
-
+  base_url: https://implant-cost-calculator.vercel.app
+  auth_endpoint: /api/decap/auth
 local_backend: true
 
 media_folder: "public/images/uploads"
