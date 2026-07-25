@@ -1,0 +1,66 @@
+[
+  { "countryCode": "US", "stateCode": "NY", "city": "New York City", "adjustmentPct": 12 },
+  { "countryCode": "US", "stateCode": "NY", "city": "Buffalo", "adjustmentPct": -6 },
+  { "countryCode": "US", "stateCode": "CA", "city": "Los Angeles", "adjustmentPct": 10 },
+  { "countryCode": "US", "stateCode": "CA", "city": "San Francisco", "adjustmentPct": 16 },
+  { "countryCode": "US", "stateCode": "CA", "city": "Sacramento", "adjustmentPct": -4 },
+  { "countryCode": "US", "stateCode": "TX", "city": "Austin", "adjustmentPct": 6 },
+  { "countryCode": "US", "stateCode": "TX", "city": "Houston", "adjustmentPct": 2 },
+  { "countryCode": "US", "stateCode": "TX", "city": "El Paso", "adjustmentPct": -8 },
+  { "countryCode": "US", "stateCode": "FL", "city": "Miami", "adjustmentPct": 8 },
+  { "countryCode": "US", "stateCode": "FL", "city": "Orlando", "adjustmentPct": 0 },
+  { "countryCode": "US", "stateCode": "IL", "city": "Chicago", "adjustmentPct": 9 },
+  { "countryCode": "US", "stateCode": "OH", "city": "Columbus", "adjustmentPct": -3 },
+  { "countryCode": "US", "stateCode": "OH", "city": "Cleveland", "adjustmentPct": -5 },
+  { "countryCode": "US", "stateCode": "GA", "city": "Atlanta", "adjustmentPct": 4 },
+  { "countryCode": "US", "stateCode": "AZ", "city": "Phoenix", "adjustmentPct": 1 },
+  { "countryCode": "US", "stateCode": "WA", "city": "Seattle", "adjustmentPct": 13 },
+  { "countryCode": "US", "stateCode": "MA", "city": "Boston", "adjustmentPct": 14 },
+
+  { "countryCode": "CA", "stateCode": "ON", "city": "Toronto", "adjustmentPct": 10 },
+  { "countryCode": "CA", "stateCode": "ON", "city": "Ottawa", "adjustmentPct": 2 },
+  { "countryCode": "CA", "stateCode": "BC", "city": "Vancouver", "adjustmentPct": 12 },
+  { "countryCode": "CA", "stateCode": "AB", "city": "Calgary", "adjustmentPct": 1 },
+  { "countryCode": "CA", "stateCode": "QC", "city": "Montreal", "adjustmentPct": 0 },
+
+  { "countryCode": "GB", "stateCode": "LDN", "city": "Central London", "adjustmentPct": 15 },
+  { "countryCode": "GB", "stateCode": "MAN", "city": "Manchester", "adjustmentPct": -2 },
+  { "countryCode": "GB", "stateCode": "BIR", "city": "Birmingham", "adjustmentPct": -3 },
+  { "countryCode": "GB", "stateCode": "SCO", "city": "Edinburgh", "adjustmentPct": 1 },
+
+  { "countryCode": "AU", "stateCode": "NSW", "city": "Sydney", "adjustmentPct": 9 },
+  { "countryCode": "AU", "stateCode": "VIC", "city": "Melbourne", "adjustmentPct": 6 },
+  { "countryCode": "AU", "stateCode": "QLD", "city": "Brisbane", "adjustmentPct": 0 },
+  { "countryCode": "AU", "stateCode": "WA", "city": "Perth", "adjustmentPct": -2 },
+
+  { "countryCode": "DE", "stateCode": "BE", "city": "Berlin", "adjustmentPct": 5 },
+  { "countryCode": "DE", "stateCode": "BY", "city": "Munich", "adjustmentPct": 9 },
+  { "countryCode": "DE", "stateCode": "NW", "city": "Cologne", "adjustmentPct": 0 },
+
+  { "countryCode": "MX", "stateCode": "BC", "city": "Tijuana", "adjustmentPct": 3 },
+  { "countryCode": "MX", "stateCode": "SON", "city": "Los Algodones", "adjustmentPct": -5 },
+  { "countryCode": "MX", "stateCode": "CDMX", "city": "Mexico City", "adjustmentPct": 8 },
+  { "countryCode": "MX", "stateCode": "JAL", "city": "Cancun", "adjustmentPct": 4 },
+
+  { "countryCode": "TR", "stateCode": "IST", "city": "Istanbul", "adjustmentPct": 6 },
+  { "countryCode": "TR", "stateCode": "ANT", "city": "Antalya", "adjustmentPct": -2 },
+  { "countryCode": "TR", "stateCode": "ANK", "city": "Ankara", "adjustmentPct": -4 },
+
+  { "countryCode": "TH", "stateCode": "BKK", "city": "Bangkok", "adjustmentPct": 7 },
+  { "countryCode": "TH", "stateCode": "PHU", "city": "Phuket", "adjustmentPct": 3 },
+  { "countryCode": "TH", "stateCode": "CM", "city": "Chiang Mai", "adjustmentPct": -4 },
+
+  { "countryCode": "IN", "stateCode": "DL", "city": "New Delhi", "adjustmentPct": 4 },
+  { "countryCode": "IN", "stateCode": "MH", "city": "Mumbai", "adjustmentPct": 8 },
+  { "countryCode": "IN", "stateCode": "KA", "city": "Bangalore", "adjustmentPct": 2 },
+
+  { "countryCode": "ES", "stateCode": "MAD", "city": "Madrid", "adjustmentPct": 7 },
+  { "countryCode": "ES", "stateCode": "BAR", "city": "Barcelona", "adjustmentPct": 9 },
+  { "countryCode": "ES", "stateCode": "VAL", "city": "Valencia", "adjustmentPct": -2 },
+
+  { "countryCode": "CR", "stateCode": "SJ", "city": "San José", "adjustmentPct": 5 },
+  { "countryCode": "CR", "stateCode": "ALJ", "city": "Alajuela", "adjustmentPct": -3 },
+
+  { "countryCode": "PL", "stateCode": "MAZ", "city": "Warsaw", "adjustmentPct": 6 },
+  { "countryCode": "PL", "stateCode": "LDZ", "city": "Krakow", "adjustmentPct": -3 }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "premium-titanium",
+    "name": "Premium Tier — Titanium",
+    "tier": "premium",
+    "material": "titanium",
+    "costPerImplantUSD": 2200,
+    "abutmentCostUSD": 450,
+    "crownCostUSD": 1350,
+    "description": "Top-tier Swiss/German-engineered titanium fixtures with the longest clinical track record and highest documented long-term success rates."
+  },
+  {
+    "id": "premium-zirconia",
+    "name": "Premium Tier — Zirconia",
+    "tier": "premium",
+    "material": "zirconia",
+    "costPerImplantUSD": 2650,
+    "abutmentCostUSD": 520,
+    "crownCostUSD": 1500,
+    "description": "Metal-free ceramic implants for patients with metal sensitivities or a preference for a fully white restoration, at a premium lab cost."
+  },
+  {
+    "id": "standard-titanium",
+    "name": "Standard Tier — Titanium",
+    "tier": "standard",
+    "material": "titanium",
+    "costPerImplantUSD": 1500,
+    "abutmentCostUSD": 320,
+    "crownCostUSD": 950,
+    "description": "Well-established titanium implant systems balancing proven durability with accessible pricing."
+  },
+  {
+    "id": "standard-zirconia",
+    "name": "Standard Tier — Zirconia",
+    "tier": "standard",
+    "material": "zirconia",
+    "costPerImplantUSD": 1850,
+    "abutmentCostUSD": 380,
+    "crownCostUSD": 1050,
+    "description": "Mid-market metal-free implants for patients wanting ceramic without premium-tier pricing."
+  },
+  {
+    "id": "economy-titanium",
+    "name": "Economy Tier — Titanium",
+    "tier": "economy",
+    "material": "titanium",
+    "costPerImplantUSD": 950,
+    "abutmentCostUSD": 220,
+    "crownCostUSD": 650,
+    "description": "Budget-friendly titanium implant systems, typically manufactured outside premium markets, suited to cost-sensitive treatment plans."
+  },
+  {
+    "id": "economy-zirconia",
+    "name": "Economy Tier — Zirconia",
+    "tier": "economy",
+    "material": "zirconia",
+    "costPerImplantUSD": 1200,
+    "abutmentCostUSD": 260,
+    "crownCostUSD": 720,
+    "description": "Entry-level metal-free option for patients prioritizing a ceramic fixture on a tighter budget."
+  }
+]

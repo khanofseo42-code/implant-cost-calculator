@@ -1,0 +1,38 @@
+[
+  {
+    "id": "delta-dental",
+    "name": "Delta Dental",
+    "typicalCoveragePct": 50,
+    "typicalAnnualMaxUSD": 2000
+  },
+  {
+    "id": "cigna",
+    "name": "Cigna Dental",
+    "typicalCoveragePct": 40,
+    "typicalAnnualMaxUSD": 1500
+  },
+  {
+    "id": "aetna",
+    "name": "Aetna Dental",
+    "typicalCoveragePct": 45,
+    "typicalAnnualMaxUSD": 1750
+  },
+  {
+    "id": "metlife",
+    "name": "MetLife Dental",
+    "typicalCoveragePct": 50,
+    "typicalAnnualMaxUSD": 2000
+  },
+  {
+    "id": "guardian",
+    "name": "Guardian Dental",
+    "typicalCoveragePct": 40,
+    "typicalAnnualMaxUSD": 1500
+  },
+  {
+    "id": "other",
+    "name": "Other Provider",
+    "typicalCoveragePct": 35,
+    "typicalAnnualMaxUSD": 1500
+  }
+]

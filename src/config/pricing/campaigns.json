@@ -1,0 +1,11 @@
+[
+  {
+    "id": "new-patient-welcome",
+    "name": "New Patient Welcome Offer",
+    "discountPct": 5,
+    "appliesToTreatmentIds": "all",
+    "active": true,
+    "startDate": "2025-01-01",
+    "endDate": "2027-12-31"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "name": "ImplantIQ — Dental Implant Cost Calculator",
+  "short_name": "ImplantIQ",
+  "description": "A precision dental implant cost calculator with personalized, itemized treatment estimates.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f9fb",
+  "theme_color": "#244cd1",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

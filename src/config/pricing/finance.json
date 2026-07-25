@@ -1,0 +1,6 @@
+[
+  { "id": "promo-0apr", "label": "0% APR Promotional", "aprPct": 0, "minMonths": 6, "maxMonths": 18 },
+  { "id": "standard-low", "label": "Standard Financing — Good Credit", "aprPct": 9.9, "minMonths": 12, "maxMonths": 60 },
+  { "id": "standard-mid", "label": "Standard Financing — Fair Credit", "aprPct": 15.9, "minMonths": 12, "maxMonths": 60 },
+  { "id": "standard-high", "label": "Standard Financing — Limited Credit", "aprPct": 24.9, "minMonths": 12, "maxMonths": 48 }
+]

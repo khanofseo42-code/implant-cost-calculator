@@ -1,0 +1,74 @@
+[
+  {
+    "id": "bone-graft",
+    "name": "Bone Graft",
+    "unit": "per-arch",
+    "baseCostUSD": 550,
+    "variancePct": 30,
+    "comboDiscounts": [{ "withProcedureId": "sinus-lift", "discountPct": 12 }]
+  },
+  {
+    "id": "sinus-lift",
+    "name": "Sinus Lift",
+    "unit": "per-arch",
+    "baseCostUSD": 2200,
+    "variancePct": 25,
+    "comboDiscounts": [{ "withProcedureId": "bone-graft", "discountPct": 12 }]
+  },
+  {
+    "id": "extraction",
+    "name": "Tooth Extraction",
+    "unit": "per-implant",
+    "baseCostUSD": 275,
+    "variancePct": 20
+  },
+  {
+    "id": "ct-scan",
+    "name": "3D CT / CBCT Scan",
+    "unit": "flat",
+    "baseCostUSD": 250,
+    "variancePct": 15
+  },
+  {
+    "id": "sedation",
+    "name": "IV Sedation",
+    "unit": "flat",
+    "baseCostUSD": 600,
+    "variancePct": 25
+  },
+  {
+    "id": "temporary-crown",
+    "name": "Temporary Crown",
+    "unit": "per-implant",
+    "baseCostUSD": 400,
+    "variancePct": 15
+  },
+  {
+    "id": "permanent-crown",
+    "name": "Additional Permanent Crown",
+    "unit": "per-implant",
+    "baseCostUSD": 1500,
+    "variancePct": 18
+  },
+  {
+    "id": "digital-impressions",
+    "name": "Digital Impressions / Intraoral Scan",
+    "unit": "flat",
+    "baseCostUSD": 175,
+    "variancePct": 10
+  },
+  {
+    "id": "prf",
+    "name": "PRF (Platelet-Rich Fibrin)",
+    "unit": "per-arch",
+    "baseCostUSD": 200,
+    "variancePct": 20
+  },
+  {
+    "id": "socket-preservation",
+    "name": "Socket Preservation",
+    "unit": "per-implant",
+    "baseCostUSD": 450,
+    "variancePct": 22
+  }
+]

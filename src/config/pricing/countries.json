@@ -1,0 +1,179 @@
+[
+  {
+    "code": "US",
+    "name": "United States",
+    "currency": "USD",
+    "currencySymbol": "$",
+    "costMultiplier": 1.0,
+    "taxRate": 0.0,
+    "taxLabel": "Sales Tax (varies)",
+    "states": [
+      { "code": "NY", "name": "New York", "costMultiplier": 1.22 },
+      { "code": "CA", "name": "California", "costMultiplier": 1.28 },
+      { "code": "TX", "name": "Texas", "costMultiplier": 0.94 },
+      { "code": "FL", "name": "Florida", "costMultiplier": 0.98 },
+      { "code": "IL", "name": "Illinois", "costMultiplier": 1.05 },
+      { "code": "OH", "name": "Ohio", "costMultiplier": 0.88 },
+      { "code": "GA", "name": "Georgia", "costMultiplier": 0.92 },
+      { "code": "AZ", "name": "Arizona", "costMultiplier": 0.9 },
+      { "code": "WA", "name": "Washington", "costMultiplier": 1.12 },
+      { "code": "MA", "name": "Massachusetts", "costMultiplier": 1.18 }
+    ]
+  },
+  {
+    "code": "CA",
+    "name": "Canada",
+    "currency": "CAD",
+    "currencySymbol": "CA$",
+    "costMultiplier": 0.95,
+    "taxRate": 0.05,
+    "taxLabel": "GST",
+    "states": [
+      { "code": "ON", "name": "Ontario", "costMultiplier": 1.08 },
+      { "code": "BC", "name": "British Columbia", "costMultiplier": 1.1 },
+      { "code": "AB", "name": "Alberta", "costMultiplier": 0.98 },
+      { "code": "QC", "name": "Quebec", "costMultiplier": 0.96 }
+    ]
+  },
+  {
+    "code": "GB",
+    "name": "United Kingdom",
+    "currency": "GBP",
+    "currencySymbol": "£",
+    "costMultiplier": 1.05,
+    "taxRate": 0.0,
+    "taxLabel": "VAT (medical exempt)",
+    "states": [
+      { "code": "LDN", "name": "London", "costMultiplier": 1.25 },
+      { "code": "MAN", "name": "Manchester", "costMultiplier": 0.95 },
+      { "code": "BIR", "name": "Birmingham", "costMultiplier": 0.92 },
+      { "code": "SCO", "name": "Scotland", "costMultiplier": 0.9 }
+    ]
+  },
+  {
+    "code": "AU",
+    "name": "Australia",
+    "currency": "AUD",
+    "currencySymbol": "A$",
+    "costMultiplier": 1.15,
+    "taxRate": 0.0,
+    "taxLabel": "GST (medical exempt)",
+    "states": [
+      { "code": "NSW", "name": "New South Wales", "costMultiplier": 1.1 },
+      { "code": "VIC", "name": "Victoria", "costMultiplier": 1.05 },
+      { "code": "QLD", "name": "Queensland", "costMultiplier": 0.98 },
+      { "code": "WA", "name": "Western Australia", "costMultiplier": 1.0 }
+    ]
+  },
+  {
+    "code": "DE",
+    "name": "Germany",
+    "currency": "EUR",
+    "currencySymbol": "€",
+    "costMultiplier": 1.02,
+    "taxRate": 0.19,
+    "taxLabel": "VAT",
+    "states": [
+      { "code": "BE", "name": "Berlin", "costMultiplier": 1.06 },
+      { "code": "BY", "name": "Bavaria", "costMultiplier": 1.08 },
+      { "code": "NW", "name": "North Rhine-Westphalia", "costMultiplier": 0.98 }
+    ]
+  },
+  {
+    "code": "MX",
+    "name": "Mexico",
+    "currency": "USD",
+    "currencySymbol": "$",
+    "costMultiplier": 0.38,
+    "taxRate": 0.16,
+    "taxLabel": "IVA",
+    "states": [
+      { "code": "BC", "name": "Baja California (Tijuana)", "costMultiplier": 1.05 },
+      { "code": "SON", "name": "Sonora (Los Algodones)", "costMultiplier": 0.95 },
+      { "code": "CDMX", "name": "Mexico City", "costMultiplier": 1.1 },
+      { "code": "JAL", "name": "Jalisco (Cancun/Guadalajara)", "costMultiplier": 1.0 }
+    ]
+  },
+  {
+    "code": "TR",
+    "name": "Turkey",
+    "currency": "USD",
+    "currencySymbol": "$",
+    "costMultiplier": 0.32,
+    "taxRate": 0.0,
+    "taxLabel": "VAT (medical exempt)",
+    "states": [
+      { "code": "IST", "name": "Istanbul", "costMultiplier": 1.1 },
+      { "code": "ANT", "name": "Antalya", "costMultiplier": 0.95 },
+      { "code": "ANK", "name": "Ankara", "costMultiplier": 0.9 }
+    ]
+  },
+  {
+    "code": "TH",
+    "name": "Thailand",
+    "currency": "USD",
+    "currencySymbol": "$",
+    "costMultiplier": 0.42,
+    "taxRate": 0.07,
+    "taxLabel": "VAT",
+    "states": [
+      { "code": "BKK", "name": "Bangkok", "costMultiplier": 1.1 },
+      { "code": "PHU", "name": "Phuket", "costMultiplier": 1.05 },
+      { "code": "CM", "name": "Chiang Mai", "costMultiplier": 0.92 }
+    ]
+  },
+  {
+    "code": "IN",
+    "name": "India",
+    "currency": "USD",
+    "currencySymbol": "$",
+    "costMultiplier": 0.22,
+    "taxRate": 0.0,
+    "taxLabel": "GST (medical exempt)",
+    "states": [
+      { "code": "DL", "name": "Delhi", "costMultiplier": 1.05 },
+      { "code": "MH", "name": "Mumbai", "costMultiplier": 1.1 },
+      { "code": "KA", "name": "Bangalore", "costMultiplier": 1.0 }
+    ]
+  },
+  {
+    "code": "ES",
+    "name": "Spain",
+    "currency": "EUR",
+    "currencySymbol": "€",
+    "costMultiplier": 0.72,
+    "taxRate": 0.0,
+    "taxLabel": "VAT (medical exempt)",
+    "states": [
+      { "code": "MAD", "name": "Madrid", "costMultiplier": 1.08 },
+      { "code": "BAR", "name": "Barcelona", "costMultiplier": 1.1 },
+      { "code": "VAL", "name": "Valencia", "costMultiplier": 0.95 }
+    ]
+  },
+  {
+    "code": "CR",
+    "name": "Costa Rica",
+    "currency": "USD",
+    "currencySymbol": "$",
+    "costMultiplier": 0.45,
+    "taxRate": 0.13,
+    "taxLabel": "IVA",
+    "states": [
+      { "code": "SJ", "name": "San José", "costMultiplier": 1.05 },
+      { "code": "ALJ", "name": "Alajuela", "costMultiplier": 0.95 }
+    ]
+  },
+  {
+    "code": "PL",
+    "name": "Poland",
+    "currency": "EUR",
+    "currencySymbol": "€",
+    "costMultiplier": 0.5,
+    "taxRate": 0.0,
+    "taxLabel": "VAT (medical exempt)",
+    "states": [
+      { "code": "MAZ", "name": "Warsaw", "costMultiplier": 1.08 },
+      { "code": "LDZ", "name": "Krakow", "costMultiplier": 0.95 }
+    ]
+  }
+]
