@@ -104,3 +104,11 @@ export const leadFormSchema = z.object({
 });
 
 export type LeadFormValues = z.infer<typeof leadFormSchema>;
+
+export const contactFormSchema = z.object({
+  name: z.string().min(2, "Enter your full name"),
+  email: z.string().email("Enter a valid email address"),
+  message: z.string().min(10, "Tell us a bit more (at least 10 characters)"),
+});
+
+export type ContactFormValues = z.infer<typeof contactFormSchema>;

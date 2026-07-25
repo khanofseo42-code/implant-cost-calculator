@@ -236,6 +236,61 @@ body {
   border-radius: 0.5rem;
 }
 
+.legal-prose h2 {
+  margin-top: 2.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+}
+
+.legal-prose h2:first-child {
+  margin-top: 0;
+}
+
+.legal-prose h3 {
+  margin-top: 1.5rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+}
+
+.legal-prose p {
+  margin-top: 0.9rem;
+  line-height: 1.75;
+  color: var(--color-foreground-muted);
+}
+
+.legal-prose ul,
+.legal-prose ol {
+  margin-top: 0.9rem;
+  padding-left: 1.25rem;
+  line-height: 1.75;
+  color: var(--color-foreground-muted);
+}
+
+.legal-prose ul {
+  list-style-type: disc;
+}
+
+.legal-prose ol {
+  list-style-type: decimal;
+}
+
+.legal-prose li + li {
+  margin-top: 0.4rem;
+}
+
+.legal-prose a {
+  color: var(--color-brand-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-prose strong {
+  color: var(--color-foreground);
+  font-weight: 600;
+}
+
 @keyframes count-in {
   from {
     opacity: 0;

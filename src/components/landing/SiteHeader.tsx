@@ -31,10 +31,16 @@ export function SiteHeader() {
             FAQ
           </Link>
           <Link
-            href="/admin"
+            href="/blog"
             className="focus-ring rounded text-sm font-medium text-foreground-muted hover:text-foreground"
           >
-            Admin
+            Blog
+          </Link>
+          <Link
+            href="/about"
+            className="focus-ring rounded text-sm font-medium text-foreground-muted hover:text-foreground"
+          >
+            About
           </Link>
         </nav>
 

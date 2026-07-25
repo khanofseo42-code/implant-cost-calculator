@@ -85,6 +85,29 @@ export function buildFaqSchema(items: { question: string; answer: string }[]) {
   };
 }
 
+export function buildArticleSchema(opts: {
+  title: string;
+  description: string;
+  url: string;
+  publishedAt: string;
+  updatedAt: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: opts.title,
+    description: opts.description,
+    url: opts.url,
+    datePublished: opts.publishedAt,
+    dateModified: opts.updatedAt,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
+}
+
 export function buildBreadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",

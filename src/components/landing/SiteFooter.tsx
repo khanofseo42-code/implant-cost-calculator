@@ -34,8 +34,18 @@ export function SiteFooter() {
             <div>
               <h3 className="text-sm font-semibold text-foreground">Company</h3>
               <ul className="mt-3 space-y-2 text-sm text-foreground-muted">
+                <li><Link href="/about" className="hover:text-foreground">About Us</Link></li>
+                <li><Link href="/blog" className="hover:text-foreground">Blog</Link></li>
+                <li><Link href="/contact" className="hover:text-foreground">Contact</Link></li>
                 <li><Link href="/admin" className="hover:text-foreground">Admin</Link></li>
-                <li><a href={`mailto:${siteConfig.contact.email}`} className="hover:text-foreground">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">Legal</h3>
+              <ul className="mt-3 space-y-2 text-sm text-foreground-muted">
+                <li><Link href="/privacy" className="hover:text-foreground">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-foreground">Terms of Service</Link></li>
+                <li><Link href="/disclaimer" className="hover:text-foreground">Disclaimer</Link></li>
               </ul>
             </div>
           </div>
