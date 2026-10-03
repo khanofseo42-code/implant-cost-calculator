@@ -1,5 +1,7 @@
 import {
   ShieldCheck,
+  Tag,
+  Settings,
   Sparkles,
   Clock3,
   UserCheck,
@@ -25,6 +27,8 @@ import {
  */
 export const ICON_MAP: Record<string, LucideIcon> = {
   "shield-check": ShieldCheck,
+  tag: Tag,
+  settings: Settings,
   sparkles: Sparkles,
   clock: Clock3,
   "user-check": UserCheck,

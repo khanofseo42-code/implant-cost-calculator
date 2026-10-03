@@ -5,7 +5,7 @@
   "productLinks": [
     { "label": "Calculator", "url": "/calculator" },
     { "label": "Compare Estimates", "url": "/compare" },
-    { "label": "How it works", "url": "/#how-it-works" },
+    { "label": "How It Works", "url": "/#how-it-works" },
     { "label": "FAQ", "url": "/#faq" }
   ],
   "companyLinks": [
@@ -20,7 +20,11 @@
     { "label": "Disclaimer", "url": "/disclaimer" }
   ],
   "socialLinks": [
-    { "platform": "Twitter / X", "url": "https://twitter.com/implantiq" }
+    { "platform": "Twitter / X", "url": "https://twitter.com/implantiq" },
+    { "platform": "Facebook", "url": "https://facebook.com/implantiq" },
+    { "platform": "Instagram", "url": "https://instagram.com/implantiq" },
+    { "platform": "LinkedIn", "url": "https://linkedin.com/company/implantiq" },
+    { "platform": "YouTube", "url": "https://youtube.com/@implantiq" }
   ],
   "copyrightText": "provides educational cost estimates only and does not offer medical advice, diagnosis, or a binding treatment quote. Actual pricing depends on an in-person clinical evaluation."
 }

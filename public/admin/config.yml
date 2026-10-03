@@ -128,7 +128,7 @@ collections:
                 label: "Icon"
                 name: "icon"
                 widget: "select"
-                options: ["shield-check", "sparkles", "clock", "user-check", "clipboard-list", "calculator", "file-check", "message-heart", "database", "scroll-text", "lock", "search", "sliders", "users", "arrow-right", "check-circle"]
+                options: ["shield-check", "tag", "settings", "sparkles", "clock", "user-check", "clipboard-list", "calculator", "file-check", "message-heart", "database", "scroll-text", "lock", "search", "sliders", "users", "arrow-right", "check-circle"]
               - { label: "Label", name: "label", widget: "string" }
 
       - file: "content/pages/home/how-it-works.json"
@@ -152,6 +152,7 @@ collections:
         name: "whyTrust"
         fields:
           - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Highlighted word in heading (shown in blue)", name: "highlight", widget: "string", required: false }
           - { label: "Subheading", name: "subheading", widget: "string" }
           - label: "Cards"
             name: "cards"

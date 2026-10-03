@@ -1,5 +1,5 @@
 {
-  "eyebrow": "Trusted pricing intelligence for dental implants",
+  "eyebrow": "Trusted pricing intel for dental implant care",
   "title": "Know your dental implant cost in under 60 seconds",
   "highlight": "dental implant cost",
   "subtitle": "A precision cost calculator that models your location, treatment, implant brand, insurance, and financing — into one clear, itemized estimate. No sales calls. No guesswork.",
@@ -10,8 +10,8 @@
   "bannerImage": "",
   "badges": [
     { "icon": "shield-check", "label": "HIPAA-Ready Design" },
-    { "icon": "sparkles", "label": "Medical Pricing Logic" },
-    { "icon": "clock", "label": "Instant Estimate" },
+    { "icon": "tag", "label": "Medical Pricing Logic" },
+    { "icon": "clock", "label": "Instant Estimates" },
     { "icon": "user-check", "label": "No Registration Required" }
   ]
 }
