@@ -173,6 +173,11 @@ export function loadPricingConfig(): PricingConfig {
   return cachedConfig;
 }
 
+/** Drops the memoized config so the next `loadPricingConfig()` call re-validates. Called by the admin pricing API after a section is written. */
+export function invalidatePricingConfigCache(): void {
+  cachedConfig = null;
+}
+
 export { pricingConfigSchema };
 
 /** Per-section array schemas, keyed by config filename (without extension). Used by the admin API to validate a single edited section before writing it back to disk. */

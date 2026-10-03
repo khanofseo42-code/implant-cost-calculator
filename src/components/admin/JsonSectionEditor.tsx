@@ -130,7 +130,7 @@ export function JsonSectionEditor({ section, title, description }: JsonSectionEd
 
       <textarea
         value={raw}
-        onChange={(e) => setRaw(e.target.value)}
+        onChange={(e) => setDraft(e.target.value)}
         disabled={isLoading}
         spellCheck={false}
         rows={16}
